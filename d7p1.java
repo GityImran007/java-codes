@@ -1,48 +1,35 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class d7p1 { //CompareArrays
+public class ArrayComparison {
 
-    public static <T> boolean checkArrays(T[] arr1, T[] arr2) {
-
-        if (arr1.length != arr2.length) {
-            return false;
-        }
-
+    // Generic method: checks if two arrays have same elements in same order
+    public static <T> boolean areArraysEqual(T[] arr1, T[] arr2) {
+        if (arr1.length != arr2.length) return false;
         for (int i = 0; i < arr1.length; i++) {
-            if (!arr1[i].equals(arr2[i])) {
-                return false;
-            }
+            if (!arr1[i].equals(arr2[i])) return false;
         }
-
         return true;
     }
 
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
 
-        Integer[] arr1 = new Integer[5];
-        Integer[] arr2 = new Integer[5];
+        System.out.print("Enter size of arrays: ");
+        int n = sc.nextInt();
 
-        System.out.println("Enter elements of first array:");
+        Integer[] arr1 = new Integer[n];
+        Integer[] arr2 = new Integer[n];
 
-        for (int i = 0; i < 5; i++) {
-            arr1[i] = sc.nextInt();
-        }
+        System.out.println("Enter elements of Array 1:");
+        for (int i = 0; i < n; i++) arr1[i] = sc.nextInt();
 
-        System.out.println("Enter elements of second array:");
+        System.out.println("Enter elements of Array 2:");
+        for (int i = 0; i < n; i++) arr2[i] = sc.nextInt();
 
-        for (int i = 0; i < 5; i++) {
-            arr2[i] = sc.nextInt();
-        }
-
-        boolean result = checkArrays(arr1, arr2);
-
-        if (result) {
-            System.out.println("Arrays are same.");
-        } else {
-            System.out.println("Arrays are different.");
-        }
+        System.out.println("\nArray 1 : " + Arrays.toString(arr1));
+        System.out.println("Array 2 : " + Arrays.toString(arr2));
+        System.out.println("Arrays are equal: " + areArraysEqual(arr1, arr2));
 
         sc.close();
     }
